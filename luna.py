@@ -27,13 +27,13 @@ arq = None
 async def lunaQuery(query: str, user_id: int):
     query = (
         query
-        if LANGUAGE == "en"
+        if LANGUAGE == "id"
         else (await arq.translate(query, "en")).result.translatedText
     )
     resp = (await arq.luna(query, user_id)).result
     return (
         resp
-        if LANGUAGE == "en"
+        if LANGUAGE == "id"
         else (
             await arq.translate(resp, LANGUAGE)
         ).result.translatedText
@@ -50,18 +50,18 @@ async def type_and_send(message):
     await message._client.send_chat_action(chat_id, "cancel")
 
 
-@luna.on_message(filters.command("repo") & ~filters.edited)
+@luna.on_message(filters.command("crepo") & ~filters.edited)
 async def repo(_, message):
     await message.reply_text(
-        "[GitHub](https://github.com/thehamkercat/LunaChatBot)"
-        + " | [Group](t.me/PatheticProgrammers)",
+        "[Owner](https://t.me/IDnyaAL)"
+        + " | [Group](t.me/NiskalaSupport)",
         disable_web_page_preview=True,
     )
 
 
-@luna.on_message(filters.command("help") & ~filters.edited)
+@luna.on_message(filters.command("chelp") & ~filters.edited)
 async def start(_, message):
-    await luna.send_chat_action(message.chat.id, "typing")
+    await luna.send_chat_action(message.chat.id, "mengetik")
     await sleep(2)
     await message.reply_text("/repo - Get Repo Link")
 
@@ -69,7 +69,7 @@ async def start(_, message):
 @luna.on_message(
     ~filters.private
     & filters.text
-    & ~filters.command("help")
+    & ~filters.command("chelp")
     & ~filters.edited,
     group=69,
 )
@@ -92,7 +92,7 @@ async def chat(_, message):
 
 
 @luna.on_message(
-    filters.private & ~filters.command("help") & ~filters.edited
+    filters.private & ~filters.command("chelp") & ~filters.edited
 )
 async def chatpm(_, message):
     if not message.text:
