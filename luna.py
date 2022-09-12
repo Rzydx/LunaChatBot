@@ -16,8 +16,8 @@ else:
 luna = Client(
     ":memory:",
     bot_token=bot_token,
-    api_id=6,
-    api_hash="eb06d4abfb49dc3eeb1aeb98ae0f581e",
+    api_id="10124303",
+    api_hash="04023f3f53f31958454e94bf1145459d",
 )
 
 bot_id = int(bot_token.split(":")[0])
